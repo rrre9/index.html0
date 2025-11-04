@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Majed | Cybersecurity Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      transition: color 0.3s ease;
+    }
+    nav {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #bbb;
+      font-weight: 600;
+      margin-left: 1.5rem;
+    }
+    nav a:hover {
+      color: #f0f0f0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #f0f0f0;
+      cursor: default;
+      user-select: none;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px #fff;
+      color: #f0f0f0;
+    }
+    .typed-text {
+  font-size: 1.5rem;
+  color: #999;
+  height: 2.5rem;       /* ارتفاع ثابت */
+  display: flex;
+  align-items: center;  /* وسط النص عموديًا */
+  justify-content: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+    .btn-contact {
+      background: #e5e5e5;
+      color: #0a0a0a;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(229,229,229,0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-contact:hover {
+      background: #bbb;
+      color: #0a0a0a;
+      box-shadow: 0 6px 20px rgba(187,187,187,0.6);
+    }
+
+    /* Section styles */
+    section {
+      max-width: 900px;
+      margin: 5rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #bbb;
+      display: inline-block;
+      padding-bottom: 0.2rem;
+      color: #e5e5e5;
+    }
+    p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    /* Skills grid */
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .skill-item {
+      background: #1c1c1c;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+    .skill-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+    /* Certifications grid */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .cert-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .cert-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
+    .cert-card img {
+      max-height: 120px;
+      margin-bottom: 1rem;
+      object-fit: contain;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+    .cert-card:hover img {
+      filter: brightness(1);
+    }
+    .cert-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #e5e5e5;
+    }
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 0 25px rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 40px rgba(255,255,255,0.2);
+    }
+    .project-img {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      filter: brightness(0.85);
+      transition: filter 0.3s ease;
+    }
+    .project-card:hover .project-img {
+      filter: brightness(1);
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #e5e5e5;
+    }
+    .project-desc {
+      flex-grow: 1;
+      color: #ddd;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .download-btn {
+      align-self: flex-start;
+      background: #e5e5e5;
+      color: #0a0a0a;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(229,229,229,0.5);
+      transition: background 0.3s ease;
+    }
+    .download-btn:hover {
+      background: #bbb;
+    }
+    /* Contact Section */
+    #contact {
+      max-width: 500px;
+      margin: 5rem auto;
+      padding: 2rem 1rem;
+      background: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    #contact h2 {
+      margin-bottom: 2rem;
+      color: #e5e5e5;
+    }
+    .contact-icons a {
+      color: #bbb;
+      margin: 0 1rem;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
+    .contact-icons a:hover {
+      color: #e5e5e5;
+    }
+    .contact-info p {
+      margin: 0.5rem 0;
+      font-weight: 600;
+      color: #ddd;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      background: #222;
+      border: none;
+      color: #eee;
+      font-size: 1rem;
+      resize: vertical;
+      transition: box-shadow 0.3s ease;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #ddd;
+      background: #111;
+    }
+    form button {
+      width: 100%;
+      padding: 0.9rem;
+      background: #e5e5e5;
+      border: none;
+      border-radius: 30px;
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #bbb;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #000;
+      color: #555;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      user-select: none;
+    }
+    footer strong {
+      color: #e5e5e5;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="bg-black bg-opacity-90 backdrop-blur-md fixed w-full top-0 left-0 z-50 px-4 py-3 flex items-center justify-between">
+  <div class="logo font-bold text-white text-xl cursor-default select-none">REHAM</div>
+
+  <!-- زر الهامبرغر -->
+  <button id="menu-btn" class="block md:hidden text-white focus:outline-none z-50 relative">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+
+  <!-- روابط الديسكتوب -->
+  <div id="menu" class="hidden md:flex space-x-6 text-gray-300 font-semibold">
+    <a href="#about" class="hover:text-white transition">About</a>
+    <a href="#skills" class="hover:text-white transition">Skills</a>
+    <a href="#certs" class="hover:text-white transition">Certifications</a>
+    <a href="#projects" class="hover:text-white transition">Projects</a>
+    <a href="#contact" class="hover:text-white transition">Contact</a>
+  </div>
+
+  <!-- القائمة المنسدلة للجوال -->
+  <div id="mobile-menu"
+       class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-95 text-white flex flex-col items-center justify-center space-y-10 text-2xl font-semibold z-40 opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+    <a href="#about" class="hover:text-gray-300 transition">About</a>
+    <a href="#skills" class="hover:text-gray-300 transition">Skills</a>
+    <a href="#certs" class="hover:text-gray-300 transition">Certifications</a>
+    <a href="#projects" class="hover:text-gray-300 transition">Projects</a>
+    <a href="#contact" class="hover:text-gray-300 transition">Contact</a>
+  </div>
+</nav>
+
+
+
+<section class="hero" id="home">
+  <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+    REHAM
+  </h1>
+
+  <p class="typed-text text-lg sm:text-xl text-gray-400 mb-6">
+  
+  </p>
+
+  <p class="text-gray-300 max-w-xl text-center mb-8">
+    Welcome to my interactive portfolio – a live CV showcasing my projects, certifications, and participation in Computer Science conferences. Explore my journey, skills, and accomplishments.
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <a href="#contact" class="btn-contact transition-all duration-300">📩 Contact Me</a>
+    <a href="Majed_Resume.pdf" target="_blank" rel="noopener noreferrer"
+       class="btn-contact bg-transparent border border-gray-400 text-gray-300 hover:bg-gray-300 hover:text-black transition-all duration-300">
+      📄 View CV
+    </a>
+  </div>
+</section>
+
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <!-- Education Section -->
+<section id="education" data-aos="fade-up">
+  <h2>Education</h2>
+  <div class="space-y-4">
+    <div class="bg-[#1c1c1c] p-5 rounded-lg shadow-md border border-gray-700">
+      <h3 class="text-xl font-semibold text-white">Bachelor of Science in Computer Science and Information</h3>
+      <p class="text-gray-400">College of Computer Science & Engineering, University of Hail, Saudi Arabia</p>
+      <p class="text-sm text-gray-500">2022/5 – 2026/5</p>
+    </div>
+
+    <div class="bg-[#1c1c1c] p-5 rounded-lg shadow-md border border-gray-700">
+      <h3 class="text-lg font-semibold text-white">Active Member</h3>
+      <ul class="list-disc list-inside text-gray-400 mt-2">
+        <li>Cybersecurity Club (CSC)</li>
+        <li>CyberWings Team — Since November 2024</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+    <h2>About Me</h2>
+    <p>
+<p>
+  I’m REHAM, a senior Computer Science student passionate about multiple fields including web development, UI/UX design, animation & graphic design, cybersecurity, artificial intelligence, and Microsoft Office tools such as Excel, Power BI, PowerPoint, and Word. With certifications like Cyber Attacks Workshop – University of Hail, AI Workshop – Aja Space, AI Concepts & Advanced Applications – SDAIA, Power BI – TECHAED, and Microsoft Office (Excel, PowerPoint, Word), I combine strong academic knowledge with practical experience in both creative and technical projects.
+</p>
+<p>
+  I enjoy tackling complex challenges, creating interactive and visually appealing applications, and strengthening digital security. As I near graduation, I’m focused on applying my skills in real-world environments where innovation, design, data analysis, and technology come together.
+</p>
+    </p>
+    <p>
+      I enjoy tackling complex security challenges and strengthening digital defenses. As I near graduation, I’m focused on applying my skills in real-world environments where innovation and security go hand in hand.
+    </p>
+  </section>
+
+  <section id="skills" data-aos="fade-up">
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+        <div class="skill-item">Algorithm Analysis and Data Structures Design</div>
+        <div class="skill-item">Advanced Programming: Python, Java, C++, JavaScript, HTML/CSS</div>
+        <div class="skill-item">Databases and Data Management: SQL, NoSQL, MongoDB, Oracle</div>
+        <div class="skill-item">UI/UX Development: User Interface Design and Interactive Prototyping</div>
+        <div class="skill-item">Web and Mobile Application Development: React, Flutter, Node.js</div>
+        <div class="skill-item">Artificial Intelligence and Machine Learning: Python, TensorFlow, PyTorch, Scikit-learn</div>
+        <div class="skill-item">Operating Systems and Networking: Linux, Windows, macOS, Networking Basics</div>
+        <div class="skill-item">Best Practices and Software Standards: Git, Agile, DevOps, Clean Code</div>
+    </div>
+</section>
+
+
+  
+ <!-- Certificates Section -->
+<section id="certifications" data-aos="fade-up">
+  <h2>Certificates</h2>
+  <div class="cert-grid">
+
+    <div class="cert-card" data-tilt>
+      <img src="certs/hail_cyber.png" alt="University of Hail Certificate" />
+      <div class="cert-title">Cyber Attacks Workshop – University of Hail</div>
+      <a href="certs/hail_cyber.png" download class="download-btn">📥 Download</a>
+    </div>
+
+    <div class="cert-card" data-tilt>
+      <img src="certs/aja_ai.png" alt="Aja Space AI Workshop" />
+      <div class="cert-title">AI Workshop – Aja Space</div>
+      <a href="certs/aja_ai.png" download class="download-btn">📥 Download</a>
+    </div>
+
+    <div class="cert-card" data-tilt>
+      <img src="certs/sdaia_ai.png" alt="SDAIA AI Certificate" />
+      <div class="cert-title">AI Concepts & Advanced Applications – SDAIA</div>
+      <a href="certs/sdaia_ai.png" download class="download-btn">📥 Download</a>
+    </div>
+
+    <div class="cert-card" data-tilt>
+      <img src="certs/techad_powerbi.png" alt="Power BI Certificate" />
+      <div class="cert-title">Power BI – TECHAED</div>
+      <a href="certs/techad_powerbi.png" download class="download-btn">📥 Download</a>
+    </div>
+
+    <div class="cert-card" data-tilt>
+      <img src="certs/loxford_ai.png" alt="Loxford AI Certificate" />
+      <div class="cert-title">AI Webinar – Loxford</div>
+      <a href="certs/loxford_ai.png" download class="download-btn">📥 Download</a>
+    </div>
+
+  </div>
+</section>>
+
+
+
+  <!-- Projects Section -->
+  <section id="projects" data-aos="fade-up">
+    <h2>Experience & Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" data-tilt>
+        <img src="images/dns_spoofing.png" alt="DNS Spoofing" class="project-img" />
+        <div class="project-title">DNS Spoofing Attack</div>
+        <div class="project-desc">
+          Simulated an ARP spoofing attack using Ettercap on Kali Linux to redirect victim's DNS requests to a fake website in a lab environment.
+        </div>
+        <a href="DNS_Spoofing_Presentation.pptx" download class="download-btn">📁 Download PPT</a>
+      </div>
+
+      <div class="project-card" data-tilt>
+        <img src="images/static_analysis.png" alt="Static Malware Analysis" class="project-img" />
+        <div class="project-title">Malware Detection Using Static Analysis</div>
+        <div class="project-desc">
+          Analyzed APK files statically using Python and machine learning to classify apps as malicious or safe without executing them.
+        </div>
+      </div>
+
+      <div class="project-card" data-tilt>
+        <img src="images/cybersecurity_awareness.png" alt="Cybersecurity Awareness" class="project-img" />
+        <div class="project-title">Cybersecurity Awareness Session</div>
+        <div class="project-desc">
+          Presented an awareness session about cyber threats such as phishing, ransomware, and social engineering to over 100 students.
+        </div>
+      </div>
+
+      <div class="project-card" data-tilt>
+        <img src="images/social_engineering.png" alt="Social Engineering Awareness" class="project-img" />
+        <div class="project-title">Social Engineering Awareness – Ha’il Rally 2025</div>
+        <div class="project-desc">
+          Delivered a project on social engineering, its techniques, and defense methods presented to the University President.
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact Section -->
+<section id="contact" data-aos="fade-up">
+  <h2>Contact</h2>
+
+  <div class="contact-icons flex justify-center gap-6 text-2xl mb-6 text-gray-400">
+    <a href="tel:+966506151761" title="Phone" class="hover:text-white transition"><i data-feather="phone"></i></a>
+    <a href="mailto:maj.alshammarii@gmail.com" title="Email" class="hover:text-white transition"><i data-feather="mail"></i></a>
+    <a href="https://linkedin.com/in/majed-al-shammari-4095232a5" target="_blank" title="LinkedIn" class="hover:text-white transition"><i data-feather="linkedin"></i></a>
+    <a href="https://x.com/wolf_21s" target="_blank" title="X" class="hover:text-white transition">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="inline-block">
+        <path d="M20.893 3H17.75l-3.87 4.385-3.63-4.385H3l6.84 8.255L3.495 21h3.143l4.14-4.694L14.7 21h4.8l-7.312-8.892L20.893 3zm-3.058 16h-1.997l-2.911-3.493-1.36-1.614L6.996 6.046H9.03l2.696 3.26 1.226 1.482 4.883-5.49h1.95l-6.446 7.25 4.496 5.452z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Contact Form (with JS success message) -->
+  <form id="contact-form" class="max-w-md mx-auto text-left">
+    <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-[#222] text-white mb-4" />
+    <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded bg-[#222] text-white mb-4" />
+    <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded bg-[#222] text-white mb-4"></textarea>
+    <button type="submit" class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-300 transition">Send</button>
+    <p id="form-status" class="text-green-500 font-semibold mt-3 hidden">✅ Message sent successfully!</p>
+  </form>
+</section>
+
+<!-- JS to handle Formspree submission -->
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/xqabdwlz", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        form.reset();
+        status.classList.remove("hidden");
+        status.textContent = "✅ Message sent successfully!";
+      } else {
+        status.classList.remove("hidden");
+        status.classList.replace("text-green-500", "text-red-500");
+        status.textContent = "❌ Something went wrong. Please try again.";
+      }
+    } catch (err) {
+      status.classList.remove("hidden");
+      status.classList.replace("text-green-500", "text-red-500");
+      status.textContent = "❌ Network error. Please try again.";
+    }
+  });
+</script>
+
+<style>
+  .contact-icons a {
+    color: #bbb;
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .contact-icons a:hover {
+    color: #f0f0f0;
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  feather.replace();
+</script>
+
+
+
+ <footer>
+  &copy; 2025 <strong>Majed Al-Shammari</strong>. All Rights Reserved.
+  <br />
+  <small style="color: #bbb;">
+    Crafted with passion and dedication 🤍 
+  </small>
+</footer>
+
+
+  <script>
+    feather.replace();
+
+    const typed = new Typed('.typed-text', {
+      strings: [
+        'Cybersecurity Student',
+        'Ethical Hacker',
+        'SOC Analyst',
+        'Passionate About Defense'
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1500,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|',
+    });
+
+    // GSAP fade-in animations on scroll (simple version)
+    gsap.utils.toArray('section').forEach(section => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 40,
+        duration: 1.1,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+  </script>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    const isVisible = mobileMenu.classList.contains('opacity-100');
+
+    if (isVisible) {
+      mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    } else {
+      mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+    }
+  });
+
+  // Smooth scroll + auto close menu on mobile
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+
+      // إغلاق القائمة بعد الضغط
+      mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    });
+  });
+</script>
+
+
+</body>
+</html>
